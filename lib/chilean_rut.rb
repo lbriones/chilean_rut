@@ -71,18 +71,18 @@ class RUT
   ##
   #Strips a R.U.T. format (points & hyphens)
   def self.remove_format(rut)
-    rut=rut.delete "."
-    rut=rut.delete "-"
+    rut=rut.tr('.', '')
+    rut=rut.tr('-', '')
   end
 
   #Strips a R.U.T. format (only points)
   def self.remove_points(rut)
-    rut=rut.delete "."
+    rut=rut.tr('.', '')
   end
 
   #Strips a R.U.T. format (only hyphens)
   def self.remove_hyphens(rut)
-    rut=rut.delete "-"
+    rut=rut.tr('-', '')
   end
 
   ##
