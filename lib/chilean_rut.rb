@@ -71,18 +71,18 @@ class RUT
   ##
   #Strips a R.U.T. format (points & hyphens)
   def self.remove_format(rut)
-    rut=rut.tr('.', '')
-    rut=rut.tr('-', '')
+    rut=rut&.gsub('.', '')
+    rut=rut&.gsub('-', '')
   end
 
   #Strips a R.U.T. format (only points)
   def self.remove_points(rut)
-    rut=rut.tr('.', '')
+    rut=rut&.gsub('.', '')
   end
 
   #Strips a R.U.T. format (only hyphens)
   def self.remove_hyphens(rut)
-    rut=rut.tr('-', '')
+    rut=rut&.gsub('-', '')
   end
 
   ##
@@ -124,7 +124,8 @@ class RUT
   ##
   #This method will give a raw R.U.T. string its proper format adding the right points & hyphens
   def self.format(raw_rut)
-    rut = raw_rut.to_s.delete '.-'
+    rut = raw_rut.to_s&.gsub('.', '')
+    rut = rut.to_s&.gsub('-', '')
     if rut.nil? || rut.empty?
       return rut
     end
@@ -149,7 +150,7 @@ class RUT
     rut = self.format(rut).split("-")
 
     out = {
-      :rut => rut.first.delete("."),
+      :rut => rut.firstrut = raw_rut.to_s&.gsub('.', ''),
       :dv => rut.last
     }
   end
